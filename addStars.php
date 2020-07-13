@@ -28,4 +28,5 @@
 	$conn = null;
 
 	//redirect to the cool page
+	header('location: simulation.php');
 ?>

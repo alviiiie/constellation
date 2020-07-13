@@ -7,6 +7,11 @@ const dt = 0.008; //0.005 years is equal to 1.825 days
 const softeningConstant = 0.15;
 const radius = 4; //edit later
 const scale = 70;
+var canvas;
+var ctx;
+var width;
+var height;
+var response_array = [];
 
 //nBodyProblem
 //METHODS:
@@ -126,16 +131,16 @@ const innerSolarSystem = new nBodyProblem({
 
 
 //Get the canvas element and its context from the DOM
-const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
+//const canvas = document.querySelector("#canvas");
+//const ctx = canvas.getContext("2d");
 /*
 const width = canvas.width;
 const height = canvas.height;
 */
 
 
-const width = (canvas.width = window.innerWidth);
-const height = (canvas.height = window.innerHeight);
+//const width = (canvas.width = window.innerWidth);
+//const height = (canvas.height = window.innerHeight);
 
 
 /*
@@ -143,7 +148,7 @@ const height = (canvas.height = window.innerHeight);
  * We run it 60 times a second with the help of requestAnimationFrame
  */
 
-const animate = () => {
+function animate () {
   /*
    * Advance our simulation by one step
    */
@@ -155,7 +160,6 @@ const animate = () => {
 
 
   //Clear the canvas in preparation for the next drawing cycle
-
   ctx.clearRect(0, 0, width, height);
 
   //massesLen = number of masses in our list
@@ -190,4 +194,26 @@ const animate = () => {
   requestAnimationFrame(animate);
 };
 
-animate();
+window.onload = () => {
+	canvas = document.getElementById('canvas');
+	ctx = canvas.getContext("2d");
+
+	width = (canvas.width = window.innerWidth);
+	height = (canvas.height = window.innerHeight);
+	animate();
+	getStars();
+}
+
+function getStars() {
+	$.ajax ( {
+	url: "getStars.php",
+	dataType: "json",
+	success: function ( data, textStatus, jqXHR ) {
+        	// process the data, you only need the "data" argument
+        	// jQuery will automatically parse the JSON for you!
+       		response_array = data;
+		console.log(response_array);
+	}
+   });
+
+}
