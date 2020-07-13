@@ -1,5 +1,6 @@
 #canvas {
 	border: 1px solid black;
+	background: linear-gradient(to bottom, #cedce7 0%,#596a72 100%);
 	margin: 0 auto;
 	box-sizing: padding-box;
 }
