@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="main.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="drawing.js"></script>
-	<script src="gravity.js"></script>
+	<!-- <script src="gravity.js"></script> -->
 </head>
 <body>
 	<form action='addStars.php' id='formboi' method='POST'>
