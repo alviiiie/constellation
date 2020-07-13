@@ -12,6 +12,7 @@ var ctx;
 var width;
 var height;
 var response_array = [];
+var image_array = [];
 //nBodyProblem instance: innerSolarSystem
 //gravity constant
 //time step
@@ -103,6 +104,18 @@ function animate () {
       ctx.fillText(massI.name, x + 12, y + 4);
       ctx.fill();
     }
+    
+    if (massI.image) {
+    	ctx.drawImage(image_array[i], x - image_array[i].width/3, y, image_array[i].width / 2, image_array[i].height /2);
+    }
+    //if (massI.image) {
+  //  	var img = new Image();
+//	img.onload = function(){
+    //		ctx.drawImage(img, x + 12, y + 4);
+  //  	};
+//	img.src = massI.image; 
+//	console.log(img.src);
+    //}
 
 
     //boundary conditions: bounce back if hit bounds
@@ -123,7 +136,7 @@ function getStars() {
         	// jQuery will automatically parse the JSON for you!
        		response_array = data;
 		for(let n = 0; n < response_array.length; n++){
-		const massN = response_array[n];
+			const massN = response_array[n];
 
 			massN.m = (Math.random() * (0.5e-1 - 0.1e-2) + 0.1e-1);
 			massN.x = (Math.random() * (2.00e-6 - 0.5e-6) + 0.5e-6);
@@ -132,11 +145,18 @@ function getStars() {
 			massN.vx = (Math.random() * (5 - 1) + 1);
 			massN.vy = (Math.random() * (8 - 3) + 3);
 			massN.vz = (Math.random() * (7 - 2) + 2);
-		      massN.ax = 0;
+		      	massN.ax = 0;
 			massN.ay = 0;
 			massN.az = 0;
 
-	}
+			var image = new Image();
+			image.src = response_array[n].image;
+			image.onload = function() {
+				ctx.drawImage(image, massN.x, massN.y);
+			}
+			image_array[n] = image;
+
+		}
 	console.log(response_array);
 	}
    });
