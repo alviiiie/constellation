@@ -101,10 +101,10 @@ function animate () {
     //display name
     if (massI.name) {
       ctx.font = "14px Arial";
-      ctx.fillText(massI.name, x + 12, y + 4);
+      ctx.fillText(massI.name, x + 0.5, y + 0.5);
       ctx.fill();
     }
-    
+
     if (massI.image) {
     	ctx.drawImage(image_array[i], x - image_array[i].width/3, y, image_array[i].width / 2, image_array[i].height /2);
     }
@@ -113,7 +113,7 @@ function animate () {
 //	img.onload = function(){
     //		ctx.drawImage(img, x + 12, y + 4);
   //  	};
-//	img.src = massI.image; 
+//	img.src = massI.image;
 //	console.log(img.src);
     //}
 
@@ -139,12 +139,12 @@ function getStars() {
 			const massN = response_array[n];
 
 			massN.m = (Math.random() * (0.5e-1 - 0.1e-2) + 0.1e-1);
-			massN.x = (Math.random() * (2.00e-6 - 0.5e-6) + 0.5e-6);
-			massN.y = (Math.random() * (4.00e-6 - 2.00e-6) + 2.00e-6);
-			massN.z = (Math.random() * (6.00e-8 - 2.00e-8) + 2.00e-8);
-			massN.vx = (Math.random() * (5 - 1) + 1);
-			massN.vy = (Math.random() * (8 - 3) + 3);
-			massN.vz = (Math.random() * (7 - 2) + 2);
+			massN.x = (Math.round(Math.random())*2-1)*(Math.random() * (2.00e-6 - 0.5e-6) + 0.5e-6);
+			massN.y = (Math.round(Math.random()) * 2 - 1)*(Math.random() * (4.00e-6 - 2.00e-6) + 2.00e-6);
+			massN.z = (Math.round(Math.random()) * 2 - 1)*(Math.random() * (6.00e-8 - 2.00e-8) + 2.00e-8);
+			massN.vx = (Math.round(Math.random()) * 2 - 1)*(Math.random() * (5 - 1) + 1);
+			massN.vy = (Math.round(Math.random()) * 2 - 1)*(Math.random() * (8 - 3) + 3);
+			massN.vz = (Math.round(Math.random()) * 2 - 1)*(Math.random() * (7 - 2) + 2);
 		      	massN.ax = 0;
 			massN.ay = 0;
 			massN.az = 0;
