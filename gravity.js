@@ -125,7 +125,7 @@ const masses = [{
 const innerSolarSystem = new nBodyProblem({
     g, //defines the gravity constant
     dt, //defines how fast everything goes
-    masses: JSON.parse(JSON.stringify(masses)), //our list of planets
+    masses: JSON.parse(JSON.stringify(masses)),//response_array,/*JSON.parse(JSON.stringify(masses))*/ //our list of planets
     softeningConstant
 });
 
@@ -212,7 +212,8 @@ function getStars() {
         	// process the data, you only need the "data" argument
         	// jQuery will automatically parse the JSON for you!
        		response_array = data;
-		console.log(response_array);
+		        console.log(response_array);
+        console.log("hello world");
 	}
    });
 
