@@ -213,7 +213,7 @@ function getStars() {
         	// jQuery will automatically parse the JSON for you!
        		response_array = data;
 		        console.log(response_array);
-        console.log("hello world");
+        console.log("what do I do now");
 	}
    });
 
